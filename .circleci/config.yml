@@ -490,14 +490,6 @@ workflows:
           requires:
             - build-android-release
 
-      - build-android-beta:
-          context: mattermost-mobile-android-beta
-
-      - deploy-android-beta:
-          context: mattermost-mobile-android-beta
-          requires:
-            - build-android-beta
-
       - build-ios-release:
           context: mattermost-mobile-ios-release
 
@@ -505,32 +497,3 @@ workflows:
           context: mattermost-mobile-ios-release
           requires:
             - build-ios-release
-
-      - build-ios-beta:
-          context: mattermost-mobile-ios-beta
-
-      - deploy-ios-beta:
-          context: mattermost-mobile-ios-beta
-          requires:
-            - build-ios-beta
-
-      - build-android-pr:
-          context: mattermost-mobile-android-pr
-
-      - build-ios-pr:
-          context: mattermost-mobile-ios-pr
-
-      - build-android-unsigned:
-          context: mattermost-mobile-unsigned
-
-      - build-ios-unsigned:
-          context: mattermost-mobile-unsigned
-
-      - build-ios-simulator:
-          context: mattermost-mobile-unsigned
-
-      - github-release:
-          context: mattermost-mobile-unsigned
-          requires:
-            - build-android-unsigned
-            - build-ios-unsigned
