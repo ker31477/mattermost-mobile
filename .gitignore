@@ -10,7 +10,7 @@ env.d.ts
 *.apk
 *.aab
 *.ipa
-
+.gitignore
 */**/compass-icons.ttf
 
 # OSX
