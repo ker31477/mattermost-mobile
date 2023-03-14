@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "775781052932",
-    "project_id": "hsp-mattermost",
-    "storage_bucket": "hsp-mattermost.appspot.com"
+    "project_number": "1063200204106",
+    "project_id": "mattermostoth",
+    "storage_bucket": "mattermostoth.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:775781052932:android:8ee5894cb2d013d19cfb51",
+        "mobilesdk_app_id": "1:1063200204106:android:2eddb85927f7e9ffa90db3",
         "android_client_info": {
-          "package_name": "com.mattermost.rnbeta"
+          "package_name": "de.oth-regensburg.mattermost"
         }
       },
       "oauth_client": [
         {
-          "client_id": "775781052932-6rftck1r81qp51bofrh4c4mjb1mndicb.apps.googleusercontent.com",
+          "client_id": "1063200204106-merd59e4sr7k7ghfg4ksqm55e6on41l8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMlli7BZHWxKqpI2DVuGMUZHLdOKdYJCs"
+          "current_key": "AIzaSyDzMHVjHhO1_8AABpgUXkRZkUwTIiX4KwU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "775781052932-6rftck1r81qp51bofrh4c4mjb1mndicb.apps.googleusercontent.com",
+              "client_id": "1063200204106-merd59e4sr7k7ghfg4ksqm55e6on41l8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
