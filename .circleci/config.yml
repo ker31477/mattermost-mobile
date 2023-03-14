@@ -162,6 +162,8 @@ commands:
             echo ${STORE_FILE} | base64 -d | tee keystore android/app/keystore > /dev/null
             echo "" | tee -a android/gradle.properties > /dev/null
             echo MATTERMOST_RELEASE_STORE_FILE=${STORE_FILE} | tee -a android/gradle.properties > /dev/null
+            echo MATTERMOST_RELEASE_PASSWORD=${STORE_PASSWORD} | tee -a android/gradle.properties > /edv/null
+            echo MATTERMOST_RELEASE_KEY_ALIAS=${STORE_ALIAS} | tee -a android/gradle.properties > /edv/null
             echo ${STORE_ALIAS} | tee -a android/gradle.properties > /dev/null
             echo ${STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
       - run:
