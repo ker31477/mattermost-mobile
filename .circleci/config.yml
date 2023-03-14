@@ -14,7 +14,7 @@ executors:
       NODE_ENV: production
       BABEL_ENV: production
       GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -XX:MaxRAMPercentage=90.0 
-      _JAVA_OPTIONS: -Xmx3g
+      #_JAVA_OPTIONS: -Xmx3g
     docker:
       - image: cimg/android:2022.09.2-node
     working_directory: ~/mattermost-mobile
