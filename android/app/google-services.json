@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1063200204106:android:2eddb85927f7e9ffa90db3",
         "android_client_info": {
-          "package_name": "de.oth-regensburg.mattermost"
+          "package_name": "de.othregensburg.mattermost"
         }
       },
       "oauth_client": [
