@@ -13,8 +13,8 @@ executors:
       NODE_OPTIONS: --max_old_space_size=12000
       NODE_ENV: production
       BABEL_ENV: production
-      GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -XX:MaxRAMPercentage=90.0 
-      _JAVA_OPTIONS: -Xmx3g
+      #GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -XX:MaxRAMPercentage=90.0 
+      #_JAVA_OPTIONS: -Xmx3g
     docker:
       - image: cimg/android:2022.09.2-node
     working_directory: ~/mattermost-mobile
@@ -173,7 +173,7 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: export TERM=xterm && bundle exec fastlane android build --scan
+          command: export TERM=xterm && bundle exec fastlane android build
 
   build-ios:
     description: "Build the iOS app"
