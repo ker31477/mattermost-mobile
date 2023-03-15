@@ -212,7 +212,7 @@ commands:
           working_directory: fastlane
           command:
             echo ${GOOGLE_PLAY_KEY} > google-play-key.json
-            <<parameters.env>> bundle exec fastlane <<parameters.target>> playstore file:$HOME/mattermost-mobile/<<parameters.file>>
+            <<parameters.env>> bundle exec fastlane playstore file:$HOME/mattermost-mobile/<<parameters.file>>
             
   persist:
     description: "Persist mattermost-mobile directory"
