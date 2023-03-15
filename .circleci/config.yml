@@ -212,7 +212,7 @@ commands:
           working_directory: fastlane
           
           command:
-            echo $GOOGLE_PLAY_KEY > google-play-key.json
+            echo ${GOOGLE_PLAY_KEY} > google-play-key.json
             <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
 
   persist:
