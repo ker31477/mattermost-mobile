@@ -755,6 +755,7 @@ platform :android do
     file_path = options[:file]
 
     unless file_path.nil?
+      puts "File_Path is not nil"
       submit_to_google_play(file_path)
     end
   end
@@ -987,6 +988,7 @@ def submit_to_testflight(ipa_path)
 end
 
 def submit_to_google_play(file_path)
+  puts "I'm in submit to google play"
   filenames = []
   if(file_path.include?("aab"))
     aab_filename = Dir.glob(file_path).select { |f| File.file? f}.first
