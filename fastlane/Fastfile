@@ -753,7 +753,7 @@ platform :android do
 
   lane :deploy do |options|
     file_path = options[:file]
-
+    puts "Before unless in deploy job"
     unless file_path.nil?
       puts "File_Path is not nil"
       submit_to_google_play(file_path)
