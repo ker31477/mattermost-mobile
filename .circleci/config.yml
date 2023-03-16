@@ -173,7 +173,11 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: export TERM=xterm && bundle exec fastlane android build
+          command: | 
+            export TERM=xterm && bundle exec fastlane android build
+            git config --get remote.origin.url
+            pwd
+            ls
 
   build-ios:
     description: "Build the iOS app"
