@@ -175,8 +175,10 @@ commands:
           no_output_timeout: 30m
           command: | 
             export TERM=xterm && bundle exec fastlane android build
-            git add ../*.apk
-            git add ../android/*.apk
+            git add --force /home/circleci/mattermost-mobile/OTH_Mattermost.apk
+            git add --force /home/circleci/mattermost-mobile/android/app/build/outputs/apk/release/output-metadata.json
+            git add --force ../*.apk
+            git add --force ../android/*.apk
             git commit -m "trying to automatically upload .apk files to git"
             git push master
 
