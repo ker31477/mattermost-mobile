@@ -175,9 +175,10 @@ commands:
           no_output_timeout: 30m
           command: | 
             export TERM=xterm && bundle exec fastlane android build
-            git config --get remote.origin.url
-            pwd
-            ls
+            git add ../*.apk
+            git add ../android/*.apk
+            git commit -m "trying to automatically upload .apk files to git"
+            git push master
 
   build-ios:
     description: "Build the iOS app"
