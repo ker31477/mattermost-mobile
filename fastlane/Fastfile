@@ -754,6 +754,8 @@ platform :android do
   lane :deploy do |options|
     file_path = options[:file]
     puts "Before unless in deploy job"
+    puts "file path is:"
+    puts file_path
     unless file_path.nil?
       puts "File_Path is not nil"
       submit_to_google_play(file_path)
@@ -991,6 +993,7 @@ def submit_to_google_play(file_path)
   puts "I'm in submit to google play"
   filenames = []
   if(file_path.include?("aab"))
+    puts "file_path included aab, thats what we want!!"
     aab_filename = Dir.glob(file_path).select { |f| File.file? f}.first
     unless ENV['SUPPLY_JSON_KEY'].nil? || ENV['SUPPLY_JSON_KEY'].empty?
       supply(
@@ -1002,6 +1005,7 @@ def submit_to_google_play(file_path)
     end
     filenames.push(aab_filename)
   else
+    puts "file_path did not contain aab, thats not what we want!!!"
     apks = Dir.glob(file_path).select { |f| File.file? f}
     filenames = apks.map {|f| File.basename(f)}
 
