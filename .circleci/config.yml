@@ -180,7 +180,6 @@ commands:
             #git remote add temp https://github.com/ker31477/mattermost-mobile.git
             ls ../android
             cd ../android
-            ./gradlew bundleFlovornameBuildtype
             #git commit -m "trying to automatically create and upload .aab to git"
             #git push 
   build-ios:
