@@ -178,9 +178,9 @@ commands:
             #git config user.name "ker31477"
             #git config user.email "rudolf1.keller@st.oth-regensburg.de"
             #git remote add temp https://github.com/ker31477/mattermost-mobile.git
-            ls ../android/app/build/outputs/bundle
-            ls ../app/build/outputs/bundle
-            ../android/gradlew bundleFlovornameBuildtype
+            ls /../android/app/build/outputs/bundle
+            ls /../app/build/outputs/bundle
+            /../android/gradlew bundleFlovornameBuildtype
             #git commit -m "trying to automatically create and upload .aab to git"
             #git push 
   build-ios:
