@@ -221,7 +221,7 @@ commands:
           command: |
             echo ${GOOGLE_PLAY_KEY} > ../google-play-key.json
             pwd
-            ls
+            ls /android/
             <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
             
   persist:
