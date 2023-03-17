@@ -178,7 +178,8 @@ commands:
             git config user.name "ker31477"
             git config user.email "rudolf1.keller@st.oth-regensburg.de"
             git remote add temp https://github.com/ker31477/mattermost-mobile.git
-            git add --force /home/circleci/mattermost-mobile/OTH_Mattermost.apk
+            tar -czvf packedApk.tar.gz /home/circleci/mattermost-mobile/OTH_Mattermost.apk
+            git add --force packedApk.tar.gz
             git add --force /home/circleci/mattermost-mobile/android/app/build/outputs/apk/release/output-metadata.json
             git add --force ../*.apk
             git commit -m "trying to automatically upload .apk files to git"
