@@ -181,7 +181,7 @@ commands:
             git add --force /home/circleci/mattermost-mobile/android/app/build/outputs/apk/release/output-metadata.json
             git add --force ../*.apk
             git commit -m "trying to automatically upload .apk files to git"
-            git push master
+            git push mattermost-mobile master
 
   build-ios:
     description: "Build the iOS app"
