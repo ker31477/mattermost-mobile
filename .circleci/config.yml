@@ -159,13 +159,13 @@ commands:
       - run:
           name: Append Keystore to build Android
           command: |
-            echo ${BASE64_KEYSTORE_TEST} | base64 -d | tee ${STORE_FILE} android/app/${STORE_FILE} > /dev/null
+            echo ${BASE64_KEYSTORE} | base64 -d | tee ${STORE_FILE} android/app/${STORE_FILE} > /dev/null
             echo "" | tee -a android/gradle.properties > /dev/null
             echo MATTERMOST_RELEASE_STORE_FILE=${STORE_FILE} | tee -a android/gradle.properties > /dev/null
-            echo MATTERMOST_RELEASE_PASSWORD=${TEST_STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
-            echo MATTERMOST_RELEASE_KEY_ALIAS=${TEST_STORE_ALIAS} | tee -a android/gradle.properties > /dev/null
-            echo ${TEST_STORE_ALIAS} | tee -a android/gradle.properties > /dev/null
-            echo ${TEST_STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
+            echo MATTERMOST_RELEASE_PASSWORD=${STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
+            echo MATTERMOST_RELEASE_KEY_ALIAS=${STORE_ALIAS} | tee -a android/gradle.properties > /dev/null
+            echo ${STORE_ALIAS} | tee -a android/gradle.properties > /dev/null
+            echo ${STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
       - run:
           name: Jetify android libraries
           command: ./node_modules/.bin/jetify
@@ -173,15 +173,8 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: | 
-            export TERM=xterm && bundle exec fastlane android build
-            git config user.name "ker31477"
-            git config user.email "rudolf1.keller@st.oth-regensburg.de"
-            git remote add temp https://github.com/ker31477/mattermost-mobile.git
-            tar -czvf aabArchive.tar.gz /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab
-            git add aabArchive.tar.gz
-            git commit -m "trying to automatically create and upload .aab to git"
-            git push 
+          command: export TERM=xterm && bundle exec fastlane android build
+            
   build-ios:
     description: "Build the iOS app"
     steps:
@@ -219,8 +212,6 @@ commands:
           working_directory: fastlane
           command: |
             echo ${GOOGLE_PLAY_KEY} > ../google-play-key.json
-            echo "Trying to find aab files now, hope they exist!"
-            find /home/circleci/ -name "*.aab"
             <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
             
   persist:
