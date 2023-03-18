@@ -786,7 +786,6 @@ platform :android do
     config_mode = ENV['BUILD_FOR_RELEASE'] == 'true' ? 'Release' : 'Debug'
     build_task = ENV['ANDROID_BUILD_TASK'].nil? || ENV['ANDROID_BUILD_TASK'].empty? ? 'assemble' : ENV['ANDROID_BUILD_TASK']
     build_task = build_task.split(",")
-    puts "im building android now! build_task is:"
     puts build_task
     if build_task.include?("assemble")
       gradle(
@@ -799,15 +798,14 @@ platform :android do
           }
       )
     end
-
-    if build_task.include?("bundle")
-      gradle(
-          task: 'app:bundle',
-          build_type: config_mode,
-          project_dir: 'android/',
-      )
-    end
+    
+    gradle(
+        task: 'app:bundle',
+        build_type: config_mode,
+        project_dir: 'android/',
+    )
   end
+
 
   def move_android_to_root
     app_name =  ENV['APP_NAME'] || 'Mattermost Beta'
