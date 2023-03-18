@@ -753,11 +753,8 @@ platform :android do
 
   lane :deploy do |options|
     file_path = options[:file]
-    puts "Before unless in deploy job"
-    puts "file path is:"
-    puts file_path
+
     unless file_path.nil?
-      puts "File_Path is not nil"
       submit_to_google_play(file_path)
     end
   end
@@ -786,7 +783,7 @@ platform :android do
     config_mode = ENV['BUILD_FOR_RELEASE'] == 'true' ? 'Release' : 'Debug'
     build_task = ENV['ANDROID_BUILD_TASK'].nil? || ENV['ANDROID_BUILD_TASK'].empty? ? 'assemble' : ENV['ANDROID_BUILD_TASK']
     build_task = build_task.split(",")
-    puts build_task
+
     if build_task.include?("assemble")
       gradle(
           task: 'app:assemble',
@@ -798,14 +795,15 @@ platform :android do
           }
       )
     end
-    
-    gradle(
-        task: 'app:bundle',
-        build_type: config_mode,
-        project_dir: 'android/',
-    )
-  end
 
+    if build_task.include?("bundle")
+      gradle(
+          task: 'app:bundle',
+          build_type: config_mode,
+          project_dir: 'android/',
+      )
+    end
+  end
 
   def move_android_to_root
     app_name =  ENV['APP_NAME'] || 'Mattermost Beta'
@@ -989,10 +987,8 @@ def submit_to_testflight(ipa_path)
 end
 
 def submit_to_google_play(file_path)
-  puts "I'm in submit to google play"
   filenames = []
   if(file_path.include?("aab"))
-    puts "file_path included aab, thats what we want!!"
     aab_filename = Dir.glob(file_path).select { |f| File.file? f}.first
     unless ENV['SUPPLY_JSON_KEY'].nil? || ENV['SUPPLY_JSON_KEY'].empty?
       supply(
@@ -1004,7 +1000,6 @@ def submit_to_google_play(file_path)
     end
     filenames.push(aab_filename)
   else
-    puts "file_path did not contain aab, thats not what we want!!!"
     apks = Dir.glob(file_path).select { |f| File.file? f}
     filenames = apks.map {|f| File.basename(f)}
 
