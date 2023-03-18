@@ -159,7 +159,7 @@ commands:
       - run:
           name: Append Keystore to build Android
           command: |
-            echo ${BASE64_KEYSTORE} | base64 -d | tee ${STORE_FILE} android/app/${STORE_FILE} > /dev/null
+            echo ${BASE64_KEYSTORE_TEST} | base64 -d | tee ${STORE_FILE} android/app/${STORE_FILE} > /dev/null
             echo "" | tee -a android/gradle.properties > /dev/null
             echo MATTERMOST_RELEASE_STORE_FILE=${STORE_FILE} | tee -a android/gradle.properties > /dev/null
             echo MATTERMOST_RELEASE_PASSWORD=${STORE_PASSWORD} | tee -a android/gradle.properties > /dev/null
