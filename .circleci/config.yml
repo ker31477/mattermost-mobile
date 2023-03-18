@@ -219,6 +219,7 @@ commands:
           working_directory: fastlane
           command: |
             echo ${GOOGLE_PLAY_KEY} > ../google-play-key.json
+            echo "Trying to find aab files now, hope they exist!"
             find /home/circleci/ -name "*.aab"
             <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
             
