@@ -438,7 +438,7 @@ jobs:
       - deploy-to-store:
           task: "Deploy to Google Play"
           target: android
-          file: "*.apk"
+          file: "*.aab"
           env: "SUPPLY_TRACK=beta"
 
   deploy-android-beta:
