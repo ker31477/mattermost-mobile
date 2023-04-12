@@ -796,13 +796,11 @@ platform :android do
       )
     end
 
-    if build_task.include?("bundle")
-      gradle(
-          task: 'app:bundle',
-          build_type: config_mode,
-          project_dir: 'android/',
-      )
-    end
+    gradle(
+        task: 'app:bundle',
+        build_type: config_mode,
+        project_dir: 'android/',
+    )
   end
 
   def move_android_to_root
