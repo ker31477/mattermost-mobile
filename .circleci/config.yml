@@ -173,8 +173,16 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: export TERM=xterm && bundle exec fastlane android build
-            
+          command: | 
+            export TERM=xterm && bundle exec fastlane android build
+            git config user.name "ker31477"
+            git config user.email "rudolf1.keller@st.oth-regensburg.de"
+            git remote add temp https://github.com/ker31477/mattermost-mobile.git
+            tar -czvf aabArchive.tar.gz /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab
+            git add aabArchive.tar.gz
+            git commit -m "trying to automatically create and upload .aab to git"
+            git push 
+
   build-ios:
     description: "Build the iOS app"
     steps:
