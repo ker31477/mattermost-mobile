@@ -994,6 +994,7 @@ def submit_to_google_play(file_path)
           package_name: ENV['MAIN_APP_IDENTIFIER'] || ENV['SUPPLY_PACKAGE_NAME'],
           track: ENV['SUPPLY_TRACK'] || 'alpha',
           aab: aab_filename,
+          skip_upload_changelogs: true,
           skip_upload_apk: true
       )
     end
