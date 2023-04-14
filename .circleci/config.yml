@@ -451,7 +451,7 @@ jobs:
           task: "Deploy to Google Play"
           target: android
           file: "*.aab"
-          env: "SUPPLY_TRACK=TestTrack"
+          env: "SUPPLY_TRACK=production"
 
   deploy-android-beta:
     executor:
