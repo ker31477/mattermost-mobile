@@ -23,7 +23,7 @@ executors:
   ios:
     parameters:
       resource_class:
-        default: medium
+        default: macos.x86.medium.gen2
         type: string
     environment:
       NODE_OPTIONS: --max_old_space_size=12000
