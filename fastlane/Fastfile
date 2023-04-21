@@ -328,7 +328,7 @@ end
       type: "appstore",
       app_identifier: ['de.othregensburg.mattermost', 'de.othregensburg.mattermost.NotificationService', 'de.othregensburg.mattermost.MattermostShare'],
       force_for_new_devices: true,
-      readonly: true
+      readonly: false
     )
     # You can repeate the sync_code_signing with other types of certificates such as appstore and adhoc
     sync_code_signing(
