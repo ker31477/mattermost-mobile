@@ -6,7 +6,7 @@ username "mm.hsp@web.de" # Your Apple Developer Portal username
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
 
-git_url("https://github.com/mm-service/mmfastlane.git")
+git_url("git@github.com:ker31477/mmfastlane.git")
 
 storage_mode("git")
 
