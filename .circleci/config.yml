@@ -493,10 +493,10 @@ workflows:
       - build-android-release:
           context: mattermost-mobile-android-release
 
-    #  - deploy-android-release:
-    #      context: mattermost-mobile-android-release
-    #      requires:
-    #        - build-android-release
+      - deploy-android-release:
+          context: mattermost-mobile-android-release
+          requires:
+            - build-android-release
 
     #  - build-ios-release:
     #      context: mattermost-mobile-ios-release
