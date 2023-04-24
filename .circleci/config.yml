@@ -179,7 +179,7 @@ commands:
           no_output_timeout: 30m
           command: |
             export TERM=xterm && bundle exec fastlane android build
-            ls /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/
+            pwd
             
   build-ios:
     description: "Build the iOS app"
