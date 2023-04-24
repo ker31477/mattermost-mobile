@@ -216,7 +216,8 @@ commands:
           working_directory: fastlane
           command: |
             echo ${GOOGLE_PLAY_KEY} > ../google-play-key.json
-            <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:/home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab
+            cp /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab /home/circleci/mattermost-mobile/
+            <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
             
   persist:
     description: "Persist mattermost-mobile directory"
