@@ -180,6 +180,7 @@ commands:
           command: |
             export TERM=xterm && bundle exec fastlane android build
             pwd
+            ls
             
   build-ios:
     description: "Build the iOS app"
