@@ -330,7 +330,7 @@ jobs:
       - build-android
       - persist
       - save:
-          filename: "*.apk"
+          filename: "*.aab"
 
   build-android-pr:
     executor: android
