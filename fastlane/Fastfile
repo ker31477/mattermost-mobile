@@ -1018,6 +1018,12 @@ def submit_to_google_play(file_path)
   filenames = []
   if(file_path.include?("aab"))
     aab_filename = Dir.glob(file_path).select { |f| File.file? f}.first
+    testfiles = Dir.glob(file_path)
+    puts "trying to print all files in file path"
+    puts testfiles 
+    puts "trying to print all files in current directory"
+    testfiles2 = Dir.glob("*.*")
+    puts "filepath is #{file_path}"
     puts "trying to upload aabs now"
     puts "aab filename is #{aab_filename}"
     unless ENV['SUPPLY_JSON_KEY'].nil? || ENV['SUPPLY_JSON_KEY'].empty?
