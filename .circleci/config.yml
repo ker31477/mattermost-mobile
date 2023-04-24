@@ -177,7 +177,9 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: export TERM=xterm && bundle exec fastlane android build
+          command: |
+            export TERM=xterm && bundle exec fastlane android build
+            cp /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab /home/circleci/mattermost-mobile/
             
   build-ios:
     description: "Build the iOS app"
@@ -216,7 +218,6 @@ commands:
           working_directory: fastlane
           command: |
             echo ${GOOGLE_PLAY_KEY} > ../google-play-key.json
-            cp /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab /home/circleci/mattermost-mobile/
             <<parameters.env>> bundle exec fastlane <<parameters.target>> deploy file:$HOME/mattermost-mobile/<<parameters.file>>
             
   persist:
