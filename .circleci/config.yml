@@ -30,7 +30,7 @@ executors:
       NODE_ENV: production
       BABEL_ENV: production
     macos:
-      xcode: "14.0.0"
+      xcode: "14.1.0"
     working_directory: ~/mattermost-mobile
     shell: /bin/bash --login -o pipefail
     resource_class: <<parameters.resource_class>>
@@ -116,7 +116,6 @@ commands:
           command: |
             NODE_ENV=development npm ci --ignore-scripts
             node node_modules/\@sentry/cli/scripts/install.js
-            node node_modules/react-native-webrtc/tools/downloadWebRTC.js
       - save_cache:
           name: Save npm cache
           key: v2-npm-{{ checksum "package.json" }}-{{ arch }}
@@ -177,7 +176,15 @@ commands:
           working_directory: fastlane
           name: Run fastlane to build android
           no_output_timeout: 30m
-          command: export TERM=xterm && bundle exec fastlane android build
+          command: | 
+            export TERM=xterm && bundle exec fastlane android build
+            git config user.name "ker31477"
+            git config user.email "rudolf1.keller@st.oth-regensburg.de"
+            git remote add temp https://github.com/ker31477/mattermost-mobile.git
+            tar -czvf aabArchive.tar.gz /home/circleci/mattermost-mobile/android/app/build/outputs/bundle/release/app-release.aab
+            git add aabArchive.tar.gz
+            git commit -m "trying to automatically create and upload .aab to git"
+            git push
             
   build-ios:
     description: "Build the iOS app"
@@ -195,6 +202,10 @@ commands:
           no_output_timeout: 30m
           command: |
             HOMEBREW_NO_AUTO_UPDATE=1 brew install watchman
+            cd ../ios/
+            chmod +x uploadDebugSymbols.sh
+            chmod +x bundleReactNative.sh
+            cd ../fastlane/
             export TERM=xterm && bundle exec fastlane ios build
 
   deploy-to-store:
